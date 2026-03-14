@@ -36,6 +36,7 @@ def call_tool(
         "execute_readonly_sql": tools.execute_readonly_sql,
         "refresh_schema_index": tools.refresh_schema_index,
         "get_table_catalog": tools.get_table_catalog,
+        "evaluate_ragas": tools.evaluate_ragas,
     }
     if tool_name not in dispatch:
         raise HTTPException(status_code=404, detail=f"Unknown MCP tool: {tool_name}")
@@ -75,4 +76,3 @@ def get_run_trace(
     _enforce_rate_limit(x_client_id or "anonymous-client")
     resources = MCPResources(orchestrator)
     return resources.run_trace(run_id=run_id)
-

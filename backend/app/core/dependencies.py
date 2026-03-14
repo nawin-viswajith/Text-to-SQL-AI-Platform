@@ -11,6 +11,7 @@ from app.rag.chroma_client import ChromaSchemaStore
 from app.rag.retriever import SchemaRetriever
 from app.rag.schema_indexer import SchemaIndexer
 from app.services.query_orchestrator import QueryOrchestrator
+from app.services.ragas_evaluator import RagasEvaluator
 from app.services.run_store import RunStore
 
 
@@ -30,6 +31,7 @@ def get_orchestrator() -> QueryOrchestrator:
     retriever = SchemaRetriever(chroma_store=chroma_store)
     indexer = SchemaIndexer(mysql_client=mysql_client, chroma_store=chroma_store)
     tracer = LangSmithTracer(settings=settings)
+    ragas_evaluator = RagasEvaluator(settings=settings, tracer=tracer)
     run_store = RunStore()
     return QueryOrchestrator(
         mysql_client=mysql_client,
@@ -39,5 +41,5 @@ def get_orchestrator() -> QueryOrchestrator:
         sql_policy=policy,
         run_store=run_store,
         tracer=tracer,
+        ragas_evaluator=ragas_evaluator,
     )
-

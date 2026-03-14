@@ -48,6 +48,10 @@ class AgentState(BaseModel):
     mode: Literal["connected", "generic_sql_fallback"] = "connected"
 
     rag_context: list[TableContext] = Field(default_factory=list)
+    retrieval_strategy: Literal["mmr", "similarity"] = "mmr"
+    retrieval_fetch_k: int = 12
+    mmr_lambda: float = 0.7
+    retrieval_diagnostics: dict[str, Any] = Field(default_factory=dict)
     candidate_sql: str | None = None
     safe_sql: str | None = None
     explain_plan: str | None = None
@@ -72,6 +76,6 @@ class AgentState(BaseModel):
     ] | None = None
 
     langsmith_trace_id: str | None = None
+    ragas_scores: dict[str, float] | None = None
     started_at: datetime
     updated_at: datetime
-

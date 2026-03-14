@@ -13,12 +13,13 @@
   7. Schema updater (conditional)
   8. Finalize
 - ChromaDB stores schema metadata for retrieval.
+- Retrieval supports `MMR` reranking for better schema diversity.
 - MySQL access is read-only via SQL policy and executor.
-- LangSmith hooks capture workflow events/traces.
+- RAGAS scoring can evaluate runs and log metrics.
+- LangSmith hooks capture workflow events, retrieval diagnostics, and evaluation metrics.
 
 ## Security and Reliability
 - Read-only SQL policy with denylist and SELECT-only enforcement.
 - Automatic LIMIT policy to avoid unbounded scans.
 - Retry path only for schema mismatch failures.
 - MCP tool endpoints protected by API auth in production and rate limited.
-

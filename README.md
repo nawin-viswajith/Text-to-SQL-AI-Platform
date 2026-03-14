@@ -5,7 +5,8 @@ This repository contains an enterprise-grade Text-to-SQL platform with:
 - FastAPI backend with OpenAPI docs
 - LangGraph-style reflexion workflow for SQL generation/retry
 - MySQL read-only execution
-- ChromaDB-backed schema retrieval (with fallback in-memory index)
+- ChromaDB-backed schema retrieval with MMR reranking (fallback in-memory index)
+- RAGAS evaluation endpoint and optional per-query scoring
 - MCP-compatible tools and resources
 - React + Vite + Tailwind + Framer Motion dashboard
 
@@ -36,4 +37,3 @@ npm run dev
 - ReDoc: `http://localhost:8000/redoc`
 
 In production (`APP_ENV=prod`), docs routes require `X-Docs-Token`.
-
