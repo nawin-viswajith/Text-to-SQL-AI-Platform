@@ -21,6 +21,13 @@ def run(state: AgentState, deps: WorkflowDeps) -> AgentState:
             trace_id=state.langsmith_trace_id,
             payload=diagnostics,
         )
+        quality = diagnostics.get("quality", {})
+        if quality:
+            deps.tracer.log_metrics(
+                trace_id=state.langsmith_trace_id,
+                metrics={key: float(value) for key, value in quality.items()},
+                source="retrieval",
+            )
         state.reflection_notes.append(f"Retrieved {len(state.rag_context)} schema context docs.")
     else:
         state.rag_context = []

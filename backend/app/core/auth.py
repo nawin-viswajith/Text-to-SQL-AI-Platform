@@ -22,3 +22,30 @@ def require_api_access(x_api_token: str | None = Header(default=None)) -> None:
             detail="Unauthorized API access.",
         )
 
+
+def require_role(
+    allowed_roles: set[str],
+    x_user_role: str | None = Header(default=None),
+) -> None:
+    settings = get_settings()
+    if not settings.rbac_enabled:
+        return
+    role = (x_user_role or "viewer").strip().lower()
+    allowed = {r.lower() for r in allowed_roles}
+    if role not in allowed:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail=f"Role '{role}' is not allowed for this action.",
+        )
+
+
+def require_data_admin_role(x_user_role: str | None = Header(default=None)) -> None:
+    require_role({"admin", "data_engineer"}, x_user_role=x_user_role)
+
+
+def require_mcp_role(x_user_role: str | None = Header(default=None)) -> None:
+    require_role({"admin", "developer", "analyst"}, x_user_role=x_user_role)
+
+
+def require_analyst_role(x_user_role: str | None = Header(default=None)) -> None:
+    require_role({"admin", "analyst", "data_engineer"}, x_user_role=x_user_role)

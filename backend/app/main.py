@@ -10,6 +10,7 @@ from app.api.v1.evaluate import router as evaluate_router
 from app.api.v1.mcp import router as mcp_router
 from app.api.v1.query import router as query_router
 from app.api.v1.schema import router as schema_router
+from app.core.audit import audit_middleware
 from app.core.auth import require_docs_access
 from app.core.config import get_settings
 from app.core.logging import configure_logging
@@ -31,6 +32,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.middleware("http")(audit_middleware)
 
 app.include_router(health_router, prefix=settings.api_prefix)
 app.include_router(query_router, prefix=settings.api_prefix)

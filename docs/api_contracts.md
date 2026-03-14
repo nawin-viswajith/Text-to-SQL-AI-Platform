@@ -25,6 +25,11 @@
 - `/docs`
 - `/redoc`
 
+## Access Control Headers
+- `X-Api-Token`: API/MCP protection in production
+- `X-Docs-Token`: docs protection in production
+- `X-User-Role`: role context when `RBAC_ENABLED=true`
+
 ## Retrieval and Evaluation
 - Query API supports retrieval strategy controls:
   - `retrieval_strategy`: `mmr` or `similarity`

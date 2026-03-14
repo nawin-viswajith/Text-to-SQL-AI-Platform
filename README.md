@@ -40,12 +40,14 @@ Enterprise-grade Text-to-SQL platform with reflexion retries, schema-aware RAG, 
   - node event logging
   - retrieval diagnostics logging
   - metric feedback logging (RAGAS/fallback scores)
+- HTTP audit middleware with request IDs and latency logging.
 
 ### API / MCP
 - FastAPI backend with OpenAPI docs.
 - REST endpoints for query, streaming, schema refresh, run retrieval, and evaluation.
 - MCP tool/resource endpoints with:
   - production auth gating
+  - optional RBAC role gating (`RBAC_ENABLED=true`)
   - sliding-window rate limiting
 
 ### Frontend
@@ -191,6 +193,18 @@ Response includes:
 cd backend
 python -m compileall app
 pytest app/tests -q
+```
+
+Centralized test suite directory:
+
+```bash
+pytest test -q
+```
+
+Smoke test:
+
+```bash
+python test/smoke/run_smoke.py
 ```
 
 If `pytest` is not installed, run:

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from fastapi import APIRouter, Depends, Header, HTTPException, status
 
-from app.core.auth import require_api_access
+from app.core.auth import require_api_access, require_mcp_role
 from app.core.dependencies import get_orchestrator
 from app.mcp.resources import MCPResources
 from app.mcp.server import SlidingWindowRateLimiter
@@ -10,7 +10,7 @@ from app.mcp.tools import MCPTools
 from app.schemas.api_requests import MCPToolRequest
 from app.services.query_orchestrator import QueryOrchestrator
 
-router = APIRouter(tags=["mcp"], dependencies=[Depends(require_api_access)])
+router = APIRouter(tags=["mcp"], dependencies=[Depends(require_api_access), Depends(require_mcp_role)])
 rate_limiter = SlidingWindowRateLimiter(max_requests=60, window_seconds=60)
 
 
