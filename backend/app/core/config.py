@@ -30,6 +30,7 @@ class Settings(BaseModel):
     docs_token: str = "change-me"
     api_token: str = "change-me-api-token"
     swagger_title: str = "Enterprise Text-to-SQL API"
+    rbac_enabled: bool = False
 
     langsmith_tracing: bool = False
     langsmith_project: str = "enterprise-text2sql"
@@ -64,6 +65,7 @@ def get_settings() -> Settings:
         "docs_token": os.getenv("DOCS_TOKEN", "change-me"),
         "api_token": os.getenv("API_TOKEN", "change-me-api-token"),
         "swagger_title": os.getenv("SWAGGER_TITLE", "Enterprise Text-to-SQL API"),
+        "rbac_enabled": os.getenv("RBAC_ENABLED", "false").lower() == "true",
         "langsmith_tracing": os.getenv("LANGSMITH_TRACING", "false").lower() == "true",
         "langsmith_project": os.getenv("LANGSMITH_PROJECT", "enterprise-text2sql"),
         "langsmith_api_key": os.getenv("LANGSMITH_API_KEY"),

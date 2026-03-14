@@ -17,7 +17,7 @@
 - [x] Plan: Delivery foundation setup.
 - [x] Subtopic: Bootstrap repo structure for backend, frontend, infra, docs.
 - [x] Subtopic: Configure CI skeleton and environment matrix (dev/stage/on-prem prod).
-- [ ] Subtopic: Create initial risk register and mitigation owners.
+- [x] Subtopic: Create initial risk register and mitigation owners.
 - [ ] KPI: CI executes baseline pipeline without failures.
 - [ ] Exit Gate: Phase 0 sign-off completed.
 
@@ -48,9 +48,9 @@
 ## Week 6
 - [x] Plan: Schema intelligence (part 2).
 - [x] Subtopic: Implement retrieval and ranking for schema context (top-k).
-- [ ] Subtopic: Add retrieval telemetry and quality metrics logging.
-- [ ] Subtopic: Build integration tests for schema retrieval.
-- [ ] KPI: Target relevance quality achieved on benchmark prompts.
+- [x] Subtopic: Add retrieval telemetry and quality metrics logging.
+- [x] Subtopic: Build integration tests for schema retrieval.
+- [x] KPI: Target relevance quality achieved on benchmark prompts.
 - [ ] Exit Gate: Phase 2 completion sign-off.
 
 ## Week 7
@@ -58,15 +58,15 @@
 - [x] Subtopic: Implement SQL generation node with schema-grounded prompting.
 - [x] Subtopic: Add SQL policy validator (SELECT-only + denylist).
 - [x] Subtopic: Enforce default/max LIMIT policy.
-- [ ] KPI: Unsafe SQL leakage rate is zero in test suite.
+- [x] KPI: Unsafe SQL leakage rate is zero in test suite.
 - [ ] Exit Gate: Security review for SQL policy passed.
 
 ## Week 8
 - [x] Plan: Explain and execution safety.
 - [x] Subtopic: Add EXPLAIN pre-check before execution.
 - [x] Subtopic: Add execution node output schema (rows, columns, timing).
-- [ ] Subtopic: Build tests for valid generation and guarded execution.
-- [ ] KPI: Stable query execution on baseline scenarios.
+- [x] Subtopic: Build tests for valid generation and guarded execution.
+- [x] KPI: Stable query execution on baseline scenarios.
 - [ ] Exit Gate: Phase 3 acceptance criteria met.
 
 ## Week 9
@@ -74,7 +74,7 @@
 - [x] Subtopic: Implement error classifier for schema mismatch and non-retryable errors.
 - [x] Subtopic: Implement reflexion analyzer routing decisions.
 - [x] Subtopic: Add retry counters and retry budget policy.
-- [ ] KPI: Errors classified correctly by category in tests.
+- [x] KPI: Errors classified correctly by category in tests.
 - [ ] Exit Gate: Reflexion decision logic approved.
 
 ## Week 10
@@ -89,7 +89,7 @@
 - [x] Plan: MCP and developer tooling (part 1).
 - [x] Subtopic: Implement MCP tool endpoints (generate_sql, execute_readonly_sql).
 - [x] Subtopic: Implement auth and request governance for external clients.
-- [ ] Subtopic: Add contract tests for MCP tool schemas.
+- [x] Subtopic: Add contract tests for MCP tool schemas.
 - [ ] KPI: External client can call tools successfully in stage.
 - [ ] Exit Gate: MCP API review passed.
 
@@ -104,7 +104,7 @@
 ## Week 13
 - [x] Plan: UI MVP foundation.
 - [x] Subtopic: Set up React + Vite + Tailwind 4 + Framer Motion baseline.
-- [ ] Subtopic: Implement dashboard layout shell and routing.
+- [x] Subtopic: Implement dashboard layout shell and routing.
 - [x] Subtopic: Apply Deep Space Noir design system tokens.
 - [ ] KPI: UI shell fully responsive desktop/mobile.
 - [ ] Exit Gate: UI baseline approved by product/design.
@@ -128,23 +128,23 @@
 ## Week 16
 - [x] Plan: UI stabilization and beta prep.
 - [x] Subtopic: Add frontend error handling and loading states.
-- [ ] Subtopic: Add interaction tests for query lifecycle.
-- [ ] Subtopic: Prepare internal beta enablement notes.
+- [x] Subtopic: Add interaction tests for query lifecycle.
+- [x] Subtopic: Prepare internal beta enablement notes.
 - [ ] KPI: Internal beta-ready UI quality baseline achieved.
 - [ ] Exit Gate: Phase 6 beta launch approval.
 
 ## Week 17
 - [ ] Plan: Enterprise hardening (security).
-- [ ] Subtopic: Implement RBAC baseline and role-based API access.
+- [x] Subtopic: Implement RBAC baseline and role-based API access.
 - [ ] Subtopic: Integrate secrets handling for on-prem runtime.
-- [ ] Subtopic: Expand audit logging coverage for all critical operations.
+- [x] Subtopic: Expand audit logging coverage for all critical operations.
 - [ ] KPI: Security checklist passes baseline controls.
 - [ ] Exit Gate: Security gate approval complete.
 
 ## Week 18
 - [ ] Plan: Enterprise hardening (operations).
-- [ ] Subtopic: Build observability dashboards and alerting.
-- [ ] Subtopic: Define backup/recovery runbook.
+- [x] Subtopic: Build observability dashboards and alerting.
+- [x] Subtopic: Define backup/recovery runbook.
 - [ ] Subtopic: Run load/performance tests and tune bottlenecks.
 - [ ] KPI: Stage reliability target (99.5% success) achieved.
 - [ ] Exit Gate: Operational readiness sign-off.
@@ -152,7 +152,7 @@
 ## Week 19
 - [ ] Plan: UAT preparation.
 - [ ] Subtopic: Finalize UAT scenarios with business users.
-- [ ] Subtopic: Prepare release checklist and rollback strategy.
+- [x] Subtopic: Prepare release checklist and rollback strategy.
 - [ ] Subtopic: Freeze change scope for release branch.
 - [ ] KPI: UAT environment and scripts fully ready.
 - [ ] Exit Gate: UAT kickoff approved.
@@ -184,7 +184,7 @@
 ## Week 23
 - [ ] Plan: Production release.
 - [ ] Subtopic: Deploy to on-prem production.
-- [ ] Subtopic: Perform smoke tests and critical path validation.
+- [x] Subtopic: Perform smoke tests and critical path validation.
 - [ ] Subtopic: Start hypercare monitoring window.
 - [ ] KPI: Zero P1 incidents during first 48 hours.
 - [ ] Exit Gate: Release marked stable.

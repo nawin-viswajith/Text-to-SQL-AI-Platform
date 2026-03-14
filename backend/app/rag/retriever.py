@@ -67,6 +67,46 @@ class SchemaRetriever:
             remaining = [doc for doc in remaining if doc.get("table_name") != best_doc.get("table_name")]
         return selected
 
+    def _quality_metrics(
+        self,
+        question: str,
+        selected: list[dict[str, Any]],
+    ) -> dict[str, float]:
+        if not selected:
+            return {
+                "avg_relevance": 0.0,
+                "diversity": 0.0,
+                "coverage": 0.0,
+            }
+
+        relevances = [self._similarity(question, self._doc_text(doc)) for doc in selected]
+        avg_relevance = sum(relevances) / len(relevances)
+
+        pair_dissimilarities: list[float] = []
+        for i in range(len(selected)):
+            for j in range(i + 1, len(selected)):
+                sim = self._similarity(self._doc_text(selected[i]), self._doc_text(selected[j]))
+                pair_dissimilarities.append(1.0 - sim)
+        diversity = (
+            (sum(pair_dissimilarities) / len(pair_dissimilarities))
+            if pair_dissimilarities
+            else 1.0
+        )
+
+        question_tokens = self._tokenize(question)
+        selected_tokens = self._tokenize(" ".join(self._doc_text(doc) for doc in selected))
+        coverage = (
+            len(question_tokens.intersection(selected_tokens)) / len(question_tokens)
+            if question_tokens
+            else 0.0
+        )
+
+        return {
+            "avg_relevance": round(avg_relevance, 4),
+            "diversity": round(diversity, 4),
+            "coverage": round(coverage, 4),
+        }
+
     def retrieve_with_metadata(
         self,
         question: str,
@@ -93,6 +133,7 @@ class SchemaRetriever:
             "mmr_lambda": mmr_lambda,
             "candidate_count": len(candidates),
             "selected_tables": [ctx.table_name for ctx in contexts],
+            "quality": self._quality_metrics(question=question, selected=selected),
         }
         return contexts, diagnostics
 
