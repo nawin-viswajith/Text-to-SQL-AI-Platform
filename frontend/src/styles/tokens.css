@@ -1,0 +1,11 @@
+:root {
+  --font-ui: "Space Grotesk", "Segoe UI", sans-serif;
+  --color-bg-a: #040816;
+  --color-bg-b: #0e1428;
+  --color-bg-c: #14203f;
+  --color-surface: rgba(11, 18, 40, 0.65);
+  --color-border: rgba(160, 204, 255, 0.2);
+  --color-text: #d9e8ff;
+  --color-accent: #9de8ff;
+}
+

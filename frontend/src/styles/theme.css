@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-ui);
+  color: var(--color-text);
+  background:
+    radial-gradient(circle at 12% 16%, rgba(96, 147, 255, 0.18), transparent 42%),
+    radial-gradient(circle at 82% 20%, rgba(63, 253, 228, 0.12), transparent 40%),
+    linear-gradient(150deg, var(--color-bg-a), var(--color-bg-b) 45%, var(--color-bg-c));
+  background-attachment: fixed;
+}
+
+.bg-space {
+  position: relative;
+}
+
+.bg-space::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+}
+
+.panel {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  backdrop-filter: blur(10px);
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 12px 34px rgba(4, 8, 22, 0.35);
+}
+
+.panel-title {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.code-block {
+  margin: 0;
+  border: 1px solid rgba(170, 220, 255, 0.2);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.9rem;
+  overflow-x: auto;
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
