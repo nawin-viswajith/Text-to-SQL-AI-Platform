@@ -6,6 +6,7 @@ from fastapi.openapi.docs import get_redoc_html, get_swagger_ui_html
 from fastapi.openapi.utils import get_openapi
 
 from app.api.v1.health import router as health_router
+from app.api.v1.evaluate import router as evaluate_router
 from app.api.v1.mcp import router as mcp_router
 from app.api.v1.query import router as query_router
 from app.api.v1.schema import router as schema_router
@@ -34,6 +35,7 @@ app.add_middleware(
 app.include_router(health_router, prefix=settings.api_prefix)
 app.include_router(query_router, prefix=settings.api_prefix)
 app.include_router(schema_router, prefix=settings.api_prefix)
+app.include_router(evaluate_router, prefix=settings.api_prefix)
 app.include_router(mcp_router, prefix=settings.api_prefix)
 
 
@@ -54,4 +56,3 @@ def swagger_ui():
 @app.get("/redoc", include_in_schema=False, dependencies=[Depends(require_docs_access)])
 def redoc_ui():
     return get_redoc_html(openapi_url="/openapi.json", title=f"{app.title} - ReDoc")
-

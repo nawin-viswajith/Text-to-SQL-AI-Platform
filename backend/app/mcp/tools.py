@@ -26,3 +26,12 @@ class MCPTools:
     def get_table_catalog(self, payload: dict[str, Any]) -> dict[str, Any]:
         return {"tables": self.orchestrator.get_schema_catalog()}
 
+    def evaluate_ragas(self, payload: dict[str, Any]) -> dict[str, Any]:
+        response = self.orchestrator.evaluate_ragas(
+            question=payload.get("question", ""),
+            answer=payload.get("answer", ""),
+            contexts=payload.get("contexts", []),
+            reference_answer=payload.get("reference_answer"),
+            trace_id=payload.get("trace_id"),
+        )
+        return response.model_dump(mode="json")
